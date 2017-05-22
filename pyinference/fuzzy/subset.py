@@ -101,7 +101,7 @@ class Subset(object):
 
         """
         for i in self.domain:
-            print i, self.value(i)
+            print(i, self.value(i))
 
     def normalize(self):
         """
@@ -164,7 +164,7 @@ class Subset(object):
         if verbose:
             subplot.text(self.domain.begin, 0.0, str(self.domain.begin))
             subplot.text(self.domain.end, 0.0, str(self.domain.end))
-            for i in self.points.iterkeys():
+            for i in self.points.keys():
                 subplot.text(i, self.points[i], str(i))
 
     def level(self, lvl):

@@ -70,7 +70,7 @@ class Simple(AggregationMetod):
     def calculate(self, host):
         est = 0.0
         weight = 0.0
-        for child in host.childs.values():
+        for child in list(host.childs.values()):
             try:
                 est += float(child.get_estim())
             except TypeError:
@@ -163,7 +163,7 @@ class Mamdani(Rules):
         for rule in self.rules:
             alpha = 1.0 # Для t-нормы начальным значением будет 1
             # для каждого фактора в правиле
-            for param, value in rule.ant.iteritems():
+            for param, value in rule.ant.items():
                 # значение фактора
                 fact = host[param].get_estim()
                 # его принадлежность в классификаторе
@@ -192,7 +192,7 @@ class RulesAccurate(Rules):
         for rule in self.rules:
             alpha = 1.0 # Для t-нормы начальным значением будет 1
             # для каждого фактора в правиле
-            for param, value in rule.ant.iteritems():
+            for param, value in rule.ant.items():
                 # значение фактора
                 fact = host[param].get_estim()
                 # его принадлежность в классификаторе
@@ -225,7 +225,7 @@ class Rule(object):
 
     def __str__(self):
         res = str(self.name)+': '
-        for (name, value) in self.ant.iteritems():
+        for (name, value) in self.ant.items():
             res += str(name)+'='+value+' '
         res += ' -> '+str(self.concl)
         return res
@@ -338,7 +338,7 @@ class Tree(Domain):
             branch 2
             tree
         """
-        for leaf in self.childs.values():
+        for leaf in list(self.childs.values()):
             for i in leaf:
                 yield i
         yield self
@@ -474,18 +474,18 @@ class Controller(object):
         """
         Функция выводит данные о нечетком контроллере в человеко-читаемом виде.
         """
-        print "<Fuzzy controller>"
-        for name in self.trees.itervalues():
+        print("<Fuzzy controller>")
+        for name in self.trees.values():
             for i in name:
-                print i
-            print
-        print 'Rules:'
-        for tree in self.trees.itervalues():
+                print(i)
+            print()
+        print('Rules:')
+        for tree in self.trees.values():
             if isinstance(tree.agg, Rules):
                 for rule in tree.agg.rules:
-                    print rule
-        print
-        print '</Fuzzy controller>'
+                    print(rule)
+        print()
+        print('</Fuzzy controller>')
 
     def define_input(self, input_):
         """
@@ -494,7 +494,7 @@ class Controller(object):
             >>>
         """
         self.inputs = {}
-        for name in input_.iterkeys():
+        for name in input_.keys():
             self.inputs[name] = Tree(name=name, clas=input_[name])
         return self
 
@@ -505,12 +505,12 @@ class Controller(object):
             >>>
         """
         self.trees = {}
-        for name in out.iterkeys():
+        for name in out.keys():
             tree = Tree(name=name,
                      clas=out[name],
                      agg=self.method(),
                      tnorm=self.tnorm)
-            for branch in self.inputs.itervalues():
+            for branch in self.inputs.values():
                 tree.add(branch)
             self.trees[name] = tree
         return self
@@ -530,7 +530,7 @@ class Controller(object):
             >>>
         """
         tree = Tree(name=name, clas=clas, agg=self.method(), tnorm=self.tnorm)
-        for branch in self.inputs.itervalues():
+        for branch in self.inputs.values():
             tree.add(branch)
         self.trees[name] = tree
 
@@ -544,7 +544,7 @@ class Controller(object):
             i = 0
             for rule in rules:
                 ant, conc = rule
-                for name in conc.iterkeys():
+                for name in conc.keys():
                     self.trees[name].agg.add_rule(name='rule '+str(i),
                                                     ant=ant,
                                                     concl=conc[name])
@@ -566,7 +566,7 @@ class Controller(object):
         Синтаксис:
             >>>
         """
-        for name in input_values.iterkeys():
+        for name in input_values.keys():
             self.inputs[name].set_estim(input_values[name])
 
     def get(self):
@@ -576,7 +576,7 @@ class Controller(object):
             >>>
         """
         res = {}
-        for tree in self.trees.itervalues():
+        for tree in self.trees.values():
             res[tree.name] = tree.get_estim()
         return res
 

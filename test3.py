@@ -35,4 +35,4 @@ Prosmotri, Vremia, Konversia, Vozvrashaemost, Otkazi])
 
 q=BN.query(query=[tochka_vhoda], evidence=[ vozvrashaemost])
 
-print q
+print(q)

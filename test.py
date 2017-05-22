@@ -29,4 +29,4 @@ BN=Net(name="123",nodes=[Nine, Three, Five, Seven, Ten])
 
 q=BN.query(query=[nine], evidence=[seven])
 
-print q
+print(q)

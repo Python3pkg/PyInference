@@ -23,7 +23,7 @@ class Domain(object):
 
     def char(self):
         for i in self:
-            print i
+            print(i)
 
     def card(self):
         """Cardinality of the domain

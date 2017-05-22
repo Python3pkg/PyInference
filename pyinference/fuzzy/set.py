@@ -84,7 +84,7 @@ class FuzzySet(object):
             0.100
             0.766
         """
-        for i in self.sets.iterkeys():
+        for i in self.sets.keys():
             yield self[i]
 
     def __len__(self):
@@ -230,16 +230,16 @@ class FuzzySet(object):
         """
         res = {}
         if isinstance(val, Subset):
-            for i in self.sets.iterkeys():
+            for i in self.sets.keys():
                 j = val & self.sets[i]
                 res[i] = j.card()
         else:
-            for i in self.sets.iterkeys():
+            for i in self.sets.keys():
                 j = self.sets[i].value(val)
                 res[i] = j
         maxim = 0
         name = None
-        for i in res.iterkeys():
+        for i in res.keys():
             if res[i] > maxim:
                 maxim = res[i]
                 name = i
@@ -259,7 +259,7 @@ class FuzzySet(object):
                 можно воспользоваться данным параметром.
         """
         labels = []
-        for name, sub in self.sets.iteritems():
+        for name, sub in self.sets.items():
             sub.plot(verbose=verbose, subplot=subplot)
             labels.append(name)
         subplot.legend(labels, loc='upper right')

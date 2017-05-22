@@ -46,8 +46,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'pyinference'
-copyright = u'2014, sejros'
+project = 'pyinference'
+copyright = '2014, sejros'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -199,8 +199,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'pyinference.tex', u'pyinference Documentation',
-   u'sejros', 'manual'),
+  ('index', 'pyinference.tex', 'pyinference Documentation',
+   'sejros', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -229,8 +229,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'pyinference', u'pyinference Documentation',
-     [u'sejros'], 1)
+    ('index', 'pyinference', 'pyinference Documentation',
+     ['sejros'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -243,8 +243,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'pyinference', u'pyinference Documentation',
-   u'sejros', 'pyinference', 'One line description of project.',
+  ('index', 'pyinference', 'pyinference Documentation',
+   'sejros', 'pyinference', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -264,10 +264,10 @@ texinfo_documents = [
 # -- Options for Epub output ----------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'pyinference'
-epub_author = u'sejros'
-epub_publisher = u'sejros'
-epub_copyright = u'2014, sejros'
+epub_title = 'pyinference'
+epub_author = 'sejros'
+epub_publisher = 'sejros'
+epub_copyright = '2014, sejros'
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = u'pyinference'

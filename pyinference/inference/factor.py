@@ -148,8 +148,8 @@ class Factor(object):
 
     def _map(self, other):
         res = []
-        for i in xrange(len(other.vars)):
-            for j in xrange(len(self.vars)):
+        for i in range(len(other.vars)):
+            for j in range(len(self.vars)):
                 if self.vars[j].name == other.vars[i].name:
                     res.append(j)
                     break
@@ -192,7 +192,7 @@ class Factor(object):
             `TypeError`: ошибка возникает, когда второй операнд имеет неподдерживаемый тип.
         """
         ind = -1
-        for i in xrange(len(self.vars)):
+        for i in range(len(self.vars)):
             if var.name == self.vars[i].name:
                 ind = i
         if ind == -1:

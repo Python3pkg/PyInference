@@ -16,7 +16,7 @@ class Simple(AggregationMetod):
     def calculate(self, host):
         est = 0.0
         weight = 0.0
-        for child in host.childs.values():
+        for child in list(host.childs.values()):
             try:
                 est += float(child.get_estim())
             except TypeError:
@@ -51,7 +51,7 @@ class Mamdani(Rules):
                        self.cons.domain.end) * 0.0
         for rule in self.rules:
             alpha = 1.0
-            for i in xrange(len(values)):
+            for i in range(len(values)):
                 fact_class_name = rule.ant[i]
                 mem = self.cond[i].sets[fact_class_name].value(values[i])
                 alpha = self.tnorm.norm(alpha, mem)
@@ -68,7 +68,7 @@ class RulesAccurate(Rules):
         for rule in self.rules:
             alpha = 1.0 # Для t-нормы начальным значением будет 1
             # для каждого фактора в правиле
-            for param, value in rule.ant.iteritems():
+            for param, value in rule.ant.items():
                 # значение фактора
                 fact = host[param].get_estim()
                 # его принадлежность в классификаторе
@@ -91,7 +91,7 @@ class Rule(object):
 
     def __str__(self):
         res = str(self.name)+': '
-        for (name, value) in self.ant.iteritems():
+        for (name, value) in self.ant.items():
             res += str(name)+'='+value+' '
         res += ' -> '+str(self.concl)
         return res
@@ -128,7 +128,7 @@ def main():
         for y in xs:
             line.append(infer.calculate([x, y]).centr())
         z.append(line)
-    print z
+    print(z)
 
     fig = py.figure()
 

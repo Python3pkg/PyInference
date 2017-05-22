@@ -78,14 +78,14 @@ class MixedNode(Node):
         else:
             for rule in self.rules:
                 applies = True
-                for name, value in rule.cond.iteritems():
+                for name, value in rule.cond.items():
                     applies = applies and (self._parents_table[name].value == value)
                 if applies:
                     return rule.cons
 
     def cond_table(self):
         res = []
-        for i in xrange(self.card):
+        for i in range(self.card):
             assingment = self._ind2ass(i)
             res.append(assingment)
         return res
@@ -101,13 +101,13 @@ class MixedNode(Node):
 
     def cons_table(self):
         for rule in self.rules:
-            print rule.name, ":", rule.cond, "->", rule.cons
+            print(rule.name, ":", rule.cond, "->", rule.cons)
         pass
 
     def apply_rule_table(self, table):
         if len(table) != self.card:
             raise AttributeError
-        for i in xrange(len(table)):
+        for i in range(len(table)):
             ass = self._ind2ass(i)
             cond = {}
             for (var, val) in zip(self.parents, ass):
@@ -144,7 +144,7 @@ class LogicNode(MixedNode):
         else:
             for rule in self.rules:
                 applies = True
-                for name, value in rule.cond.iteritems():
+                for name, value in rule.cond.items():
                     applies = applies and (self._parents_table[name].value == value)
                 if applies:
                     return rule.cons
@@ -204,14 +204,14 @@ B = LogicNode(b, parents=[a, c], name='B|A,C')
 
 #######################################
 
-print B.cond_table()
+print(B.cond_table())
 B.apply_rule_table(['low', 'low', 'low', 'high'])
 B.cons_table()
-print
+print()
 
 a.set_value('high')
 c.set_value('high')
 
-print a.get_value()
-print c.get_value()
-print B.calculate()
+print(a.get_value())
+print(c.get_value())
+print(B.calculate())

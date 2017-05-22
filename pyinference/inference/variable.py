@@ -78,7 +78,7 @@ class Variable(object):
             self.terms = terms.sets
             self.classifier = terms
         elif isinstance(terms, dict):
-            self.terms = terms.keys()
+            self.terms = list(terms.keys())
             self.classifier = terms
         else:
             raise TypeError
